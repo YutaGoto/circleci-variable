@@ -9,13 +9,13 @@ jobs:
       - run:
           command: ruby app.rb
       - run:
-          command: echo 'export MY_ENV_VAR="FOO"' >> $BASH_ENV
+          command: echo 'export MY_ENV_VAR="FOO BAR"' >> $BASH_ENV
       - run:
-          command: echo ${MY_ENV_VAR}
+          command: echo "${MY_ENV_VAR}"
       - run:
           command: |
             hoge=`echo "hoge fuga"`
-            echo export MY_ENV_HOGE=${hoge} >> $BASH_ENV
+            echo export MY_ENV_HOGE=$hoge >> $BASH_ENV
       - run:
           command: echo "${MY_ENV_HOGE}"
       - run:
