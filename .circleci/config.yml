@@ -15,13 +15,13 @@ jobs:
       - run:
           command: |
             HOGE_FUGA=`echo "hoge fuga"`
-            echo export MY_ENV_HOGE=$HOGE_FUGA >> $BASH_ENV
+            echo "export MY_ENV_HOGE='${HOGE_FUGA}'" >> $BASH_ENV
       - run:
           command: echo "${MY_ENV_HOGE}"
       - run:
           command: |
             RUBY_TEXT=`ruby app.rb`
-            echo export MY_ENV_TEXT=$RUBY_TEXT >> $BASH_ENV
+            echo "export MY_ENV_TEXT='${RUBY_TEXT}'" >> $BASH_ENV
       - run:
           command: echo "${MY_ENV_TEXT}"
 
