@@ -14,16 +14,16 @@ jobs:
           command: echo ${MY_ENV_VAR}
       - run:
           command: |
-            hoge=`echo hoge`
+            hoge=`echo "hoge fuga"`
             echo export MY_ENV_HOGE=${hoge} >> $BASH_ENV
       - run:
-          command: echo ${MY_ENV_HOGE}
+          command: echo "${MY_ENV_HOGE}"
       - run:
           command: |
             text=`ruby app.rb`
             echo export MY_ENV_TEXT=$text >> $BASH_ENV
       - run:
-          command: echo ${MY_ENV_TEXT}
+          command: echo "${MY_ENV_TEXT}"
 
 workflows:
   build:
