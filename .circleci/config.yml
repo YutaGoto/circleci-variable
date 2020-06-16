@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+    steps:
+      - checkout
+      - run:
+          command: ruby app.rb
+      - run:
+          command: echo 'export MY_ENV_VAR="FOO"' >> $BASH_ENV
+      - run:
+          command: echo ${MY_ENV_VAR}
+
+workflows:
+  build:
+    jobs:
+      - build
