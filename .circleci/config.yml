@@ -9,21 +9,10 @@ jobs:
       - run:
           command: ruby app.rb
       - run:
-          command: echo 'export MY_ENV_VAR="FOO BAR"' >> $BASH_ENV
-      - run:
-          command: echo "${MY_ENV_VAR}"
-      - run:
           command: |
-            HOGE_FUGA=`echo "hoge fuga"`
-            echo "export MY_ENV_HOGE='${HOGE_FUGA}'" >> $BASH_ENV
+            echo "export RUBY_TEXT='$(ruby app.rb)'" >> $BASH_ENV
       - run:
-          command: echo "${MY_ENV_HOGE}"
-      - run:
-          command: |
-            RUBY_TEXT=`ruby app.rb`
-            echo "export MY_ENV_TEXT='${RUBY_TEXT}'" >> $BASH_ENV
-      - run:
-          command: echo "${MY_ENV_TEXT}"
+          command: echo "${RUBY_TEXT}"
 
 workflows:
   build:
